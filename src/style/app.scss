@@ -1,0 +1,14 @@
+$primary: #114488;
+$secondary: #888888;
+$light: #eeeeee;
+$dark: #111111;
+
+*, *:before, *:after {
+  box-sizing: border-box !important;
+}
+
+.no-pointer-ev {
+  pointer-events: none;
+}
+
+@import "../../../../liux";

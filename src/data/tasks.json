@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "title": "Tage",
+      "description": "Prototipo de emprendimiento",
+      "completed": true,
+      "dueDate": "2022-05-17",
+      "dueTime": "15:00"
+    },
+    {
+      "title": "Entrega de proyecto",
+      "description": "Proyecto final",
+      "completed": false,
+      "dueDate": "2022-05-18"
+    },
+    {
+      "title": "Estudiar para el examen",
+      "description": "Examen de matemáticas",
+      "completed": false,
+      "dueDate": "2022-05-19"
+    }
+  ]
+}
