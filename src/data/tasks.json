@@ -3,21 +3,26 @@
     {
       "title": "Tage",
       "description": "Prototipo de emprendimiento",
-      "completed": true,
+      "done": true,
       "dueDate": "2022-05-17",
-      "dueTime": "15:00"
-    },
-    {
-      "title": "Entrega de proyecto",
-      "description": "Proyecto final",
-      "completed": false,
-      "dueDate": "2022-05-18"
+      "dueTime": "15:00",
+      "priority": 5,
+      "tag": "study"
     },
     {
       "title": "Estudiar para el examen",
-      "description": "Examen de matemáticas",
-      "completed": false,
-      "dueDate": "2022-05-19"
+      "done": false,
+      "dueDate": "2022-05-19",
+      "priority": 3,
+      "tag": "study"
+    },
+    {
+      "title": "Comprar comida",
+      "description": "Comida para la semana",
+      "done": false,
+      "dueDate": "2022-05-21",
+      "priority": 4,
+      "tag": "shopping"
     }
   ]
 }

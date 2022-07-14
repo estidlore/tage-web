@@ -1,7 +1,6 @@
-import Auth from './Auth';
+import Calendar from './Calendar';
 import LogIn from './LogIn';
-import Tags from './Tags';
-import Tasks from './Tasks';
+import Tasks from './tasks/Tasks';
 import Tips from './Tips';
 
-export {Auth, LogIn, Tags, Tasks, Tips};
+export {Calendar, LogIn, Tasks, Tips};

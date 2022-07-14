@@ -25,14 +25,14 @@ const LogIn = () => {
     setStApp({signed: true});
   };
   return (
-    <div className="mx mw-5 px-1 mt-5 pt-5 txt-center" style={style}>
-      <h1 className="mb-3">Log In</h1>
+    <div className="mx w px1 mt5 pt5 txt-center" style={style}>
+      <h1 className="mb3">Log In</h1>
       <Input name="name" onChange={setData} placeholder="Username" />
       <Input name="pass" onChange={setData}
         placeholder="Password" type="password" />
-      <Button className="w-10" onClick={onSubmit}>Log In</Button>
+      <Button className="w10" onClick={onSubmit}>Log In</Button>
       <Hr />
-      <Button className="w-10" onClick={showSignUp}>New account</Button>
+      <Button className="w10" onClick={showSignUp}>New account</Button>
       <Modal title="Sign Up" stShow={stSignUpShow}>
         <SignUp />
       </Modal>

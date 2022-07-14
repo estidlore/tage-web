@@ -14,7 +14,7 @@ const SignUp = ({onSubmit}) => {
         placeholder="Password" type="password" />
       <Input name="pass2" onChange={setData}
         placeholder="Repeat password" type="password" />
-      <Button className="w-10" onClick={onSubmit}>Sign Up</Button>
+      <Button className="w10" onClick={onSubmit}>Sign Up</Button>
     </>
   );
 }

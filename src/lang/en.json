@@ -1,0 +1,48 @@
+{
+  "auth": {
+    "logIn": "Log In",
+    "logOut": "Logout",
+    "newAccount": "New Account",
+    "password": "Password",
+    "repeatPassword": "Repeat Password",
+    "signUp": "Sign Up",
+    "username": "Username"
+  },
+  "ui": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "edit": "Edit",
+    "filter": "Filter",
+    "delete": "Delete",
+    "new": "New",
+    "ok": "Ok",
+    "save": "Save"
+  },
+  "views": {
+    "calendar": {
+      "title": "Calendar",
+      "weekDays": {
+        "monday": "Mon",
+        "tuesday": "Tue",
+        "wednesday": "Wed",
+        "thursday": "Thu",
+        "friday": "Fri",
+        "saturday": "Sat",
+        "sunday": "Sun"
+      }
+    },
+    "tasks": {
+      "details": "Details",
+      "due": "Due",
+      "dueDate": "Due Date",
+      "dueTime": "Due Time",
+      "state": {
+        "done": "Done",
+        "pending": "Pending"
+      },
+      "tag": "Tag",
+      "title": "Tasks"
+    },
+    "tips": "Tips"
+  }
+}

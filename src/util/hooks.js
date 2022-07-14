@@ -1,6 +1,9 @@
 import {useReducer} from "react";
 
-export const useObjState = (initState) =>
+export const useForceUpdate = () =>
+  useReducer(s => !s, false)[1];
+
+export const useObjState = initState =>
   useReducer(
     (state, updates) => ({
       ...state,

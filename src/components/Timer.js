@@ -1,15 +1,22 @@
 import {Component} from 'react';
+import {clss} from '../util/funcs';
 import Button from './Button';
 import ScrollPicker from './ScrollPicker';
 
 const data = [];
 for (let i = 0; i < 60; i++) {
-  data.push(i);
+  data.push({
+    num: i,
+  });
 }
 
 const style = {
   width: "250px",
 };
+
+const renderItem = ({num}) => (
+  <>{num}</>
+);
 
 export class Timer extends Component {
   constructor(props) {
@@ -55,31 +62,32 @@ export class Timer extends Component {
   }
 
   setMinutes = val => this.setState({
-    minutes: val
+    minutes: val.num
   })
 
   setSeconds = val => this.setState({
-    seconds: val
+    seconds: val.num
   })
 
   render() {
     const {active, minutes, seconds} = this.state;
-    console.log(this.state);
-    let {className, fontClass = '', start, stop} = this.props;
-    fontClass = `col fw-bold ${fontClass}`.trimEnd();
+    let {className, fontClass, start, stop} = this.props;
+    fontClass = clss(`col fw-bold ${fontClass}`);
     return (
-      <div className={className + " txt-center"} style={style}>
+      <div className={`txt-center w ${className}`} style={style}>
         <div className="row">
           <ScrollPicker className={fontClass} data={data}
-            disabled={active} onChange={this.setMinutes} value={minutes} />
-          <span className={`w-2 flex-grow-0 mx-2 ${fontClass}`}>:</span>
+            disabled={active} onChange={this.setMinutes}
+            renderItem={renderItem} value={minutes} />
+          <span className={`w2 flex-grow-0 mx2 ${fontClass}`}>:</span>
           <ScrollPicker className={fontClass} data={data}
-            disabled={active} onChange={this.setSeconds} value={seconds} />
+            disabled={active} onChange={this.setSeconds}
+            renderItem={renderItem} value={seconds} />
         </div>
         {active ? (
-          <Button className="mt-2" onClick={this.stop}>{stop}</Button>
+          <Button className="mt2" onClick={this.stop}>{stop}</Button>
         ) : (
-          <Button className="mt-2" onClick={this.start}>{start}</Button>
+          <Button className="mt2" onClick={this.start}>{start}</Button>
         )}
       </div>
     );
@@ -87,12 +95,10 @@ export class Timer extends Component {
 }
 
 Timer.defaultProps = {
+  className: '',
+  fontClass: '',
   minutes: 0,
   seconds: 0,
 };
-
-const TimeSelect = ({...rest}) => {
-  return <ScrollPicker {...rest} data={data}  />
-}
 
 export default Timer;

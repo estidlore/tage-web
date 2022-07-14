@@ -4,7 +4,7 @@ import List from "./List";
 class ScrollPicker extends Component {
   constructor(props) {
     super(props);
-    const {itemHeight, value} = props;
+    const {itemHeight} = props;
     this.itemStyle = {height: itemHeight};
     this.refList = createRef();
     this.scrollStyle = {height: itemHeight * 3};
@@ -13,12 +13,15 @@ class ScrollPicker extends Component {
     };
   }
 
-  getItem = (item, index) => (
-    <div key={this.props.getKey(item, index)} style={this.itemStyle}
-      className="d-flex justify-center align-center">
-      {this.props.renderItem(item, index)}
-    </div>
-  )
+  getItem = (item) => {
+    const {renderItem: Item} = this.props;
+    return (
+      <div style={this.itemStyle}
+        className="d-flex justify-center align-center">
+        <Item {...item} />
+      </div>
+    );
+  }
 
   onScrollEnd = e => this.scroll(e.target.scrollTop);
 
@@ -49,30 +52,31 @@ class ScrollPicker extends Component {
   }
 
   render() {
-    const {className, data, disabled, style} = this.props;
+    const {className, data, disabled, getKey, style} = this.props;
     return (
-      <div className={`pos-relative ${className}`.trimEnd()}
+      <div className={`pos-rel ${className}`.trimEnd()}
         style={style}>
         <List ref={this.refList}
           data={data}
           disabled={disabled}
           footer={<div style={this.itemStyle} />}
+          getKey={getKey}
           header={<div style={this.itemStyle} />}
           onScrollEnd={this.onScrollEnd}
           renderItem={this.getItem}
           style={this.scrollStyle}
         />
-        <div className="no-pointer-ev pos-absolute t-50 w-10 bord-t
-            bord-b bord-2 bord-primary trans-mid-y" style={this.itemStyle} />
+        <div className="no-pointer-ev pos-abs t50 w10 bord-t
+            bord-b bord2 bord-primary trans-y" style={this.itemStyle} />
       </div>
     );
   }
 }
 
 ScrollPicker.defaultProps = {
-  getKey: (_, index) => index,
+  getKey: (el, i) => el.id ?? i,
   itemHeight: 40,
-  renderItem: item => item,
+  renderItem: item => <>{item}</>,
   value: 0,
   className: '',
 };

@@ -1,6 +1,7 @@
-import {createRef, PureComponent} from "react";
+import {Component, createRef} from "react";
+import {clss} from "../util/funcs";
 
-class List extends PureComponent {
+class List extends Component {
   constructor(props) {
     super(props);
     this.ref = createRef();
@@ -30,10 +31,15 @@ class List extends PureComponent {
     this.props.onScrollEnd?.(e);
   }
 
-  scroll = y => {
-    this.ref.current.scroll({
-      top: y,
-    });
+  scroll = y => this.ref.current.scroll({
+    top: y,
+  });
+
+  renderItem = (el, i) => {
+    const {renderItem: Item, getKey} = this.props;
+    return (
+      <Item key={getKey(el, i)} {...el} i={i} />
+    );
   }
 
   render() {
@@ -42,21 +48,31 @@ class List extends PureComponent {
       data,
       disabled,
       footer,
+      getKey: _1,
       header,
       onScrollEnd,
-      renderItem,
+      renderItem: _2,
       ...rest
     } = this.props;
     return (
       <div {...rest} ref={this.ref}
-        className={`scroll ${disabled ? 'disabled' : ''} ${className}`.trimEnd()}
+        className={clss(`list ${className}`, ['disabled', disabled])}
         onScroll={this.onScroll}>
         {header}
-        {data.map(renderItem)}
+        {data.map(this.renderItem)}
         {footer}
       </div>
     );
   }
 }
+
+List.defaultProps = {
+  disabled: false,
+  footer: null,
+  getKey: (el, i) => el.id ?? i,
+  header: null,
+  onScrollEnd: null,
+  renderItem: item => <>{item}</>,
+};
 
 export default List;
